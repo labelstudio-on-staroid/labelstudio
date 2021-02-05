@@ -22,13 +22,12 @@ spec:
         ports:
         - name: service-port
           containerPort: 8080
-          hostPort: 8080
-        readinessProbe:
+        startupProbe:
           httpGet:
             path: /version
             port: service-port
-          initialDelaySeconds: 2
-          periodSeconds: 3
+          failureThreshold: 20
+          periodSeconds: 2
         volumeMounts:
           - name: project-vol
             mountPath: /my_project
