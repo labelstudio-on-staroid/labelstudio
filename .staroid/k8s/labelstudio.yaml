@@ -53,7 +53,7 @@ metadata:
   name: project-volume
   annotations:
     storage.staroid.com/scope: Instance
-    storage.staroid.com/file-manager: "1000:100"
+    storage.staroid.com/file-manager: "0:0"
 spec:
   storageClassName: nfs
   accessModes:
