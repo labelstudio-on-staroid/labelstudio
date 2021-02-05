@@ -31,7 +31,7 @@ spec:
           periodSeconds: 2
         volumeMounts:
           - name: project-vol
-            mountPath: /project
+            mountPath: /my_project
       volumes:
         - name: project-vol
           persistentVolumeClaim:
