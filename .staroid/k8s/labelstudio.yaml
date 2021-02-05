@@ -36,7 +36,7 @@ spec:
           periodSeconds: 2
         volumeMounts:
           - name: project-vol
-            mountPath: /my_project
+            mountPath: /label-studio/my_project
       volumes:
         - name: project-vol
           persistentVolumeClaim:
