@@ -19,6 +19,16 @@ spec:
       containers:
       - name: labelstudio
         image: heartexlabs/label-studio:0.9.0
+        ports:
+        - name: service-port
+          containerPort: 8080
+          hostPort: 8080
+        startupProbe:
+          httpGet:
+            path: /version
+            port: service-port
+          failureThreshold: 20
+          periodSeconds: 2
         volumeMounts:
           - name: project-vol
             mountPath: /project
