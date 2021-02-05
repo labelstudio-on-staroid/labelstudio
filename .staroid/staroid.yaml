@@ -1,0 +1,16 @@
+# This file instructs Staroid how to build and launch the project.
+# See https://docs.staroid.com/references/staroid_yaml.html for reference.
+apiVersion: beta/v1
+starRank:
+  rate: 1.0
+build:
+  skaffold:
+    file: .staroid/skaffold.yaml
+ingress:
+- serviceName: labelstudio
+  port: 8080
+deploy:
+  implements: labelstudio-on-staroid/labelstudio
+  dependencies:
+  - project: labelstudio-on-staroid/ml-model
+    level: OPTIONAL

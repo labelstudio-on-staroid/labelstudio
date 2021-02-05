@@ -1,0 +1,55 @@
+# Kubernetes manifests for label studio
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: labelstudio-deployment
+spec:
+  replicas: 1
+  strategy:
+    type: "Recreate"
+  selector:
+    matchLabels:
+      app: labelstudio
+  template:
+    metadata:
+      labels:
+        app: labelstudio
+    spec:
+      serviceAccountName: root
+      containers:
+      - name: labelstudio
+        image: heartexlabs/label-studio:0.9.0
+        volumeMounts:
+          - name: project-vol
+            mountPath: /project
+      volumes:
+        - name: project-vol
+          persistentVolumeClaim:
+            claimName: project-volume
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: label-studio
+spec:
+  ports:
+  - name: http
+    port: 8080
+  selector:
+    app: labelstudio
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: project-volume
+  annotations:
+    storage.staroid.com/scope: Instance
+    storage.staroid.com/file-manager: "1000:100"
+spec:
+  storageClassName: nfs
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi

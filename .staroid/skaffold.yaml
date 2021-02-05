@@ -1,0 +1,13 @@
+# Staroid uses skaffold to build container images and deploy Kubernetes manifests.
+apiVersion: skaffold/v2beta1
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - .staroid/k8s/labelstudio.yaml
+profiles:
+  - name: minikube
+    patches:
+      - op: add
+        path: /deploy/kubectl/manifests/0
+        value: .staroid/k8s/minikube.yaml
