@@ -19,12 +19,18 @@ spec:
       containers:
       - name: labelstudio
         image: heartexlabs/label-studio:0.9.0
+        env:
+        - name: HOST
+          valueFrom:
+            configMapKeyRef:
+              name: staroid-envs
+              key: STAROID_SERVICE_DOMAIN
         ports:
         - name: service-port
           containerPort: 8080
         startupProbe:
           httpGet:
-            path: /version
+            path: /health
             port: service-port
           failureThreshold: 20
           periodSeconds: 2
