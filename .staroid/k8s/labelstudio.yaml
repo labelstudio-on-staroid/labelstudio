@@ -19,6 +19,13 @@ spec:
       containers:
       - name: labelstudio
         image: heartexlabs/label-studio:0.9.0
+        command:
+        - "bash"
+        - "-c"
+        - >-
+          label-studio start ${PROJECT_NAME:-my_project} -b
+          --host ${HOST:-0.0.0.0} --port ${PORT:-8080} --protocol ${PROTOCOL:-http://}
+          --username ${USERNAME:-""} --password ${PASSWORD:-""} $( [ -d /label-studio/my_project ] && echo "" || echo "--init") 
         env:
         - name: HOST
           valueFrom:
