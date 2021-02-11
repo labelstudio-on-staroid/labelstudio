@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ml-backend-config
+  labels:
+    # see https://docs.staroid.com/project/dependency.html
+    dependency.staroid.com/import: labelstudio-ml-backend-config
+data:
+  ML_BACKEND_URL: ""

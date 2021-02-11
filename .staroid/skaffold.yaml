@@ -4,6 +4,7 @@ kind: Config
 deploy:
   kubectl:
     manifests:
+      - .staroid/k8s/ml-backend.yaml
       - .staroid/k8s/labelstudio.yaml
 profiles:
   - name: minikube

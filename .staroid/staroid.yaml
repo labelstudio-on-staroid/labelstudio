@@ -11,5 +11,5 @@ ingress:
   port: 8080
 deploy:
   dependencies:
-  - project: labelstudio-on-staroid/ml-model
+  - project: labelstudio-on-staroid/ml-backend
     level: OPTIONAL

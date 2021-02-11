@@ -25,13 +25,20 @@ spec:
         - >-
           label-studio start ${PROJECT_NAME:-my_project} -b
           --host ${HOST:-0.0.0.0} --port ${PORT:-8080} --protocol ${PROTOCOL:-http://}
-          --username ${USERNAME:-""} --password ${PASSWORD:-""} $( [ -f /label-studio/my_project/config.json ] && echo "" || echo "--init") 
+          --username ${USERNAME:-""} --password ${PASSWORD:-""}
+          $( [ -f /label-studio/my_project/config.json ] && echo "" || echo "--init")
+          --ml-backends ${ML_BACKEND_URL}
         env:
         - name: HOST
           valueFrom:
             configMapKeyRef:
               name: staroid-envs
               key: STAROID_SERVICE_DOMAIN
+        - name: ML_BACKEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: ml-backend-config
+              key: ML_BACKEND_URL
         ports:
         - name: service-port
           containerPort: 8080
