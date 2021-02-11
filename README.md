@@ -9,7 +9,7 @@ Please take a look `.staroid` directory to see how it is integrated.
 
 [![Run](https://staroid.com/api/run/button.svg)](https://staroid.com/api/run)
 
-To use ML models, launch a model first from below and then select the model on launch window
+To use ML backend, launch a ML backend first from the below and then select the instance on LabelStudio launch dialog
 
  * [text sentiment](https://staroid.com/g/labelstudio-on-staroid/text-sentiment/instances)
 
