@@ -9,3 +9,7 @@ build:
 ingress:
 - serviceName: label-studio
   port: 8080
+deploy:
+  dependencies:
+  - project: labelstudio-on-staroid/ml-model
+    level: OPTIONAL
