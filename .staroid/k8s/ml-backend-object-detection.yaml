@@ -49,10 +49,10 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: ml-backend
+  name: object-detection
 spec:
   ports:
   - name: http
     port: 9090
   selector:
-    app: ml-backend
+    app: object-detection
