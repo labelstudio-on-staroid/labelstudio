@@ -19,7 +19,7 @@ deploy:
     params:
     - name: "Enable"
       type: NUMBER
-      defaultValue: "no"
+      defaultValue: 0
       options:
       - name: "yes"
         value: 1
@@ -47,3 +47,16 @@ deploy:
       paths:
       - Deployment:object-detection:spec.template.metadata.labels["pod.staroid.com/instance-type"]
       - Deployment:object-detection:spec.template.spec.containers[0].env[1].value
+  - name: Text sentiment ML backend
+    collapsed: false
+    params:
+    - name: "Enable"
+      type: NUMBER
+      defaultValue: 0
+      options:
+      - name: "yes"
+        value: 1
+      - name: "no"
+        value: 0
+      paths:
+      - Deployment:text-sentiment:spec.replicas
