@@ -27,7 +27,7 @@ spec:
           --host ${HOST:-0.0.0.0} --port ${PORT:-8080} --protocol ${PROTOCOL:-http://}
           --username ${USERNAME:-""} --password ${PASSWORD:-""}
           $( [ -f /label-studio/my_project/config.json ] && echo "" || echo "--init")
-          --ml-backends http://ml-backend:9090
+          --ml-backends http://object-detection:9090
         env:
         - name: HOST
           valueFrom:
@@ -82,14 +82,3 @@ spec:
   resources:
     requests:
       storage: 1Gi
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: ml-backend
-spec:
-  ports:
-  - name: http
-    port: 9090
-  selector:
-    app: ml-backend

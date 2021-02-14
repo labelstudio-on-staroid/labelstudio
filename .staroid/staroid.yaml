@@ -10,9 +10,6 @@ ingress:
 - serviceName: label-studio
   port: 8080
 deploy:
-  dependencies:
-  - project: labelstudio-on-staroid/ml-backend
-    level: OPTIONAL
   paramGroups:
   - name: Object detection ML backend
     collapsed: false
