@@ -19,12 +19,13 @@ deploy:
     params:
     - name: "Enable"
       type: NUMBER
+      description: Enable only one ML backend at a time
       defaultValue: 0
       options:
-      - name: "yes"
-        value: 1
-      - name: "no"
-        value: 0
+      - name: "Yes"
+        value: "1"
+      - name: "No"
+        value: "0"
       paths:
       - Deployment:object-detection:spec.replicas
     - name: "Score threshold"
@@ -52,11 +53,12 @@ deploy:
     params:
     - name: "Enable"
       type: NUMBER
+      description: Enable only one ML backend at a time
       defaultValue: 0
       options:
-      - name: "yes"
-        value: 1
-      - name: "no"
-        value: 0
+      - name: "Yes"
+        value: "1"
+      - name: "No"
+        value: "0"
       paths:
       - Deployment:text-sentiment:spec.replicas
