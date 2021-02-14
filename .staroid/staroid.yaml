@@ -13,3 +13,37 @@ deploy:
   dependencies:
   - project: labelstudio-on-staroid/ml-backend
     level: OPTIONAL
+  paramGroups:
+  - name: Object detection ML backend
+    collapsed: false
+    params:
+    - name: "Enable"
+      type: NUMBER
+      defaultValue: "no"
+      options:
+      - name: "yes"
+        value: 1
+      - name: "no"
+        value: 0
+      paths:
+      - Deployment:object-detection:spec.replicas
+    - name: "Score threshold"
+      type: NUMBER
+      optional: false
+      defaultValue: "0.5"
+      description: "lower values increase sensitivity but produce more noise."
+      paths:
+      - Deployment:object-detection:spec.template.spec.containers[0].env[0].value
+    - name: "Device"
+      type: STRING
+      description: gpu will significantly speed up image prelabeling.
+      optional: false
+      defaultValue: "standard-4"
+      options:
+      - name: cpu
+        value: "standard-4"
+      - name: gpu
+        value: "gpu-1"
+      paths:
+      - Deployment:object-detection:spec.template.metadata.labels["pod.staroid.com/instance-type"]
+      - Deployment:object-detection:spec.template.spec.containers[0].env[1].value

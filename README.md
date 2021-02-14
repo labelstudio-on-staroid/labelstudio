@@ -2,10 +2,10 @@
 
 This project brings Label Studio (https://github.com/heartexlabs/label-studio) to Staroid (https://staroid.com).
 
-Please take a look `.staroid` directory to see how it is integrated.
+Go to [Instances](https://staroid.com/g/labelstudio-on-staroid/labelstudio/instances) to start a new instance.
 
 
-## Launch
+## ML backend
 
 [![Run](https://staroid.com/api/run/button.svg)](https://staroid.com/api/run)
 

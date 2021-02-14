@@ -1,10 +1,17 @@
 # Staroid uses skaffold to build container images and deploy Kubernetes manifests.
 apiVersion: skaffold/v2beta1
 kind: Config
+build:
+  artifacts:
+  - image: object-detection
+    context: .
+    docker:
+      dockerfile: .staroid/Dockerfile_object-detection
 deploy:
   kubectl:
     manifests:
       - .staroid/k8s/ml-backend.yaml
+      - .staroid/k8s/ml-backend-object-detection.yaml
       - .staroid/k8s/labelstudio.yaml
 profiles:
   - name: minikube
