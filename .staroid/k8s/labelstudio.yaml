@@ -82,3 +82,14 @@ spec:
   resources:
     requests:
       storage: 1Gi
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ml-backend
+spec:
+  ports:
+  - name: http
+    port: 9090
+  selector:
+    app: ml-backend

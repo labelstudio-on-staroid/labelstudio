@@ -20,7 +20,7 @@ deploy:
     - name: "Enable"
       type: NUMBER
       description: Enable only one ML backend at a time
-      defaultValue: 0
+      defaultValue: "0"
       options:
       - name: "Yes"
         value: "1"
@@ -54,7 +54,7 @@ deploy:
     - name: "Enable"
       type: NUMBER
       description: Enable only one ML backend at a time
-      defaultValue: 0
+      defaultValue: "0"
       options:
       - name: "Yes"
         value: "1"
