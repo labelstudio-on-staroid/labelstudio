@@ -32,7 +32,7 @@ spec:
           checkpoint_file=/work/checkpoints/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth
           score_threshold=${SCORE_THRESHOLD}
           project_full_path=/label-studio/my_project
-          device=$( echo "$DEVICE" | grep gpu > /dev/null && echo "gpu:0" || echo "cpu")
+          device=$( echo "$DEVICE" | grep gpu > /dev/null && echo "cuda" || echo "cpu")
         env:
         - name: SCORE_THRESHOLD
           value: "0.5"
