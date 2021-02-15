@@ -1,7 +1,14 @@
-FROM continuumio/miniconda3:4.9.2
+FROM nvidia/cuda:10.1-runtime
 
-RUN apt-get update && apt-get install -y curl gcc libgl1-mesa-dev && \
+RUN apt-get update && apt-get install -y curl gcc libgl1-mesa-dev git libglib2.0-0 && \
     rm -rf /var/lib/apt/lists/*
+
+# install miniconda
+RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh > /tmp/miniconda3.sh && \
+    bash /tmp/miniconda3.sh -b && \
+    rm -f /tmp/miniconda3.sh
+
+ENV PATH "$PATH:/root/miniconda3/bin"
 
 # install pytorch 1.7 and cuda 10.1
 RUN conda install -y pytorch cudatoolkit=10.1 torchvision -c pytorch
