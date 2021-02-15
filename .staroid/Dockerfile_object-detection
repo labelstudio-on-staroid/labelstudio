@@ -26,6 +26,7 @@ RUN mkdir /work && cd work && \
 # clone label studio project and install
 RUN cd /work && git clone https://github.com/heartexlabs/label-studio && \
     cd label-studio && \
+    sed -i 's/is_uploaded_file = .*/is_uploaded_file = True/g' label_studio/ml/utils.py && \
     pip install -e .
 
 # uninstall pycocotools and reinstall mmpycocotools.
